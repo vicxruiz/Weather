@@ -31,6 +31,8 @@ enum WeatherListCellType: Hashable {
 }
 
 final class WeatherListViewController: StatefulViewController {
+    // MARK: - Constants
+    
     private enum Constants {
         static let sectionHeaderSupplementaryItem = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(
@@ -45,6 +47,8 @@ final class WeatherListViewController: StatefulViewController {
         static let currentLocationSectionWidth: CGFloat = 326.0
         static let searchBarHeight: CGFloat = 40.0
     }
+    
+    // MARK: - Properties
 
     private typealias DataSource = UICollectionViewDiffableDataSource<WeatherListSectionType, WeatherListCellType>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<WeatherListSectionType, WeatherListCellType>
@@ -104,10 +108,10 @@ final class WeatherListViewController: StatefulViewController {
         arrangedSubviews: [searchBar, collectionView],
         axis: .vertical
     )
-    
-    var enteredText = ""
 
     private let viewModel: WeatherListModelType
+    
+    // MARK: - Initialization
 
     init(
         viewModel: WeatherListModelType
@@ -121,6 +125,8 @@ final class WeatherListViewController: StatefulViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.inputs.viewDidLoad()
@@ -129,6 +135,7 @@ final class WeatherListViewController: StatefulViewController {
     }
 
     // MARK: - Bindings
+    
     private func bindViewModel() {
         viewModel.outputs.viewState = { [weak self] newState in
             guard let self = self else { return }
