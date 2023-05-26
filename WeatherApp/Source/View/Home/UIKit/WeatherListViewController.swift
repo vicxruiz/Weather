@@ -30,6 +30,7 @@ enum WeatherListCellType: Hashable {
     case search(WeatherResponse)
 }
 
+/// Main list view controller for displaying weather section data for current location, recents, and search
 final class WeatherListViewController: StatefulViewController {
     // MARK: - Constants
     

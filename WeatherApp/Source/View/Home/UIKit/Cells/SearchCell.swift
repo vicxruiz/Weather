@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 /// Custom cell for displaying weather information in a search result
+///
+/// Given more time, I would try to abstract some of these views into more reusable components
 final class SearchCell: WeatherCell {
     
     // MARK: - Private Properties

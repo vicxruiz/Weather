@@ -33,6 +33,8 @@ protocol WeatherListModelInputs {
  The view model for the WeatherListViewController.
  
  This view model is responsible for fetching and managing weather data for the weather list screen.
+ 
+ Given more time, I would use combine instead of closures
  */
 final class WeatherListViewModel: WeatherListVM {
     
@@ -175,7 +177,7 @@ final class WeatherListViewModel: WeatherListVM {
             switch result {
             case .success(let weatherResponse):
                 completion(weatherResponse)
-            case .failure(let error):
+            case .failure:
                 DispatchQueue.main.async {
                     self.outputs.viewState(.error(BasicError.networkError))
                 }

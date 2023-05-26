@@ -45,13 +45,12 @@ final class HomeSectionHeaderView: UICollectionReusableView {
     ///   - subtitle: The subtitle to be displayed (optional).
     func set(title: String) {
         titleLabel.text = title
-        var bottomLayout: CGFloat = 0
 
         contentStackView.isLayoutMarginsRelativeArrangement = true
         contentStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(
             top: Layout.pd200,
             leading: 0,
-            bottom: bottomLayout,
+            bottom: 0,
             trailing: 0
         )
     }

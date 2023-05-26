@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 /// Custom cell for displaying weather information for current location
+///
+/// Given more time, I would try to abstract some of these views into more reusable components
 final class CurrentLocationCell: WeatherCell {
     // MARK: - Private View Properties
     
