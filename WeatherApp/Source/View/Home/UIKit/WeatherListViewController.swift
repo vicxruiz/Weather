@@ -160,24 +160,32 @@ final class WeatherListViewController: StatefulViewController {
     private func updateDataSource(rowTypes: [WeatherListSectionCellConfig]) {
         var snapshot = Snapshot()
 
+        // Define the order of sections
         let sectionOrder: [WeatherListSectionType] = [
             .search,
             .currentLocation,
             .recents,
         ]
 
+        // Iterate through the section order and add sections and items to the snapshot
         for sectionType in sectionOrder {
+            // Find the corresponding section configuration for the current section type
             guard let sectionConfig = rowTypes.first(where: { $0.section == sectionType }) else {
                 continue
             }
             
+            // Remove duplicate items using a set
             let uniqueItems = Array(Set(sectionConfig.cells))
+            
+            // Add the section and its unique items to the snapshot
             snapshot.appendSections([sectionType])
             snapshot.appendItems(uniqueItems, toSection: sectionType)
         }
 
+        // Apply the snapshot to the data source
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+
 
     private func generateLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout(sectionProvider: { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
