@@ -200,6 +200,7 @@
 		98FC0DCD2A1FEE1900909C92 = {
 			isa = PBXGroup;
 			children = (
+				98AB27CF2A214D0900DF9843 /* Screen Shot 2023-05-26 at 4.24.20 PM.png */,
 				98FC0DD82A1FEE1900909C92 /* WeatherApp */,
 				98FC0DEA2A1FEE1D00909C92 /* WeatherAppTests */,
 				98FC0DF42A1FEE1D00909C92 /* WeatherAppUITests */,
@@ -220,7 +221,6 @@
 		98FC0DD82A1FEE1900909C92 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				98AB27CF2A214D0900DF9843 /* Screen Shot 2023-05-26 at 4.24.20 PM.png */,
 				98AB27BB2A20E66F00DF9843 /* Info.plist */,
 				98FC0DDF2A1FEE1D00909C92 /* WeatherApp.entitlements */,
 				98FC0E042A1FEF2A00909C92 /* Source */,
