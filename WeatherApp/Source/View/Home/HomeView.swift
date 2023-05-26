@@ -13,8 +13,12 @@ struct HomeView: View {
     }
     
     func makeBody() -> some View {
-        VStack {
-            HomeControllerRepresentable()
+        NavigationView {
+            VStack {
+                HomeControllerRepresentable()
+            }
+            .navigationTitle(Strings.Home.weather)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }

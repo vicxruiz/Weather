@@ -9,12 +9,17 @@ import SwiftUI
 
 /// HomeController bridge to HomeView
 struct HomeControllerRepresentable: UIViewControllerRepresentable {
-    
-    func makeUIViewController(context: Context) -> HomeViewController {
-        return HomeViewController()
+    func makeUIViewController(context: Context) -> WeatherListViewController {
+        let weatherRepo = WeatherService()
+        let locationService = LocationService()
+        let viewModel = WeatherListViewModel(
+            weatherRepository: weatherRepo,
+            locationService: locationService
+        )
+        return WeatherListViewController(viewModel: viewModel)
     }
 
     func updateUIViewController(
-        _ uiViewController: HomeViewController, context: Context
+        _ uiViewController: WeatherListViewController, context: Context
     ) {}
 }
