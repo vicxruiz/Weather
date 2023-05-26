@@ -158,11 +158,23 @@ final class WeatherListViewController: StatefulViewController {
     
     private func updateDataSource(rowTypes: [WeatherListSectionCellConfig]) {
         var snapshot = Snapshot()
-        let sections = rowTypes.map { $0.section }
-        snapshot.appendSections(sections)
-        for (section, items) in rowTypes {
-            snapshot.appendItems(items, toSection: section)
+
+        let sectionOrder: [WeatherListSectionType] = [
+            .search,
+            .currentLocation,
+            .recents,
+        ]
+
+        for sectionType in sectionOrder {
+            guard let sectionConfig = rowTypes.first(where: { $0.section == sectionType }) else {
+                continue
+            }
+            
+            let uniqueItems = Array(Set(sectionConfig.cells))
+            snapshot.appendSections([sectionType])
+            snapshot.appendItems(uniqueItems, toSection: sectionType)
         }
+
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 

@@ -11,7 +11,7 @@ struct Strings {
     enum Errors {
         static let error = "Error"
         static let tryAgain = "Please try again."
-        static let somethingWentWrong = "Something went wrong"
+        static let networkError = "Unable to load data"
     }
     
     enum Home {
@@ -19,7 +19,7 @@ struct Strings {
         static let currentLocation = "Current Location"
         static let recents = "Recently Searched"
         static let searchPlaceholder = "Search by City"
-        static let searchResults = "Results"
+        static let searchResults = "Result"
         static let feelsLike = "Feels Like"
         static let wind = "Wind"
         static let pressure = "Pressure"

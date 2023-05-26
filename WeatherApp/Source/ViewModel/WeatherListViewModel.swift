@@ -41,7 +41,7 @@ final class WeatherListViewModel: WeatherListVM {
     private let locationService: LocationService
     private let weatherRepository: WeatherRepository
     private var completedCurrentLocationRequest: Bool = false
-    
+    private var hasFetchedCurrentLocationWeather = false
     private var sectionConfigs: [WeatherListSectionCellConfig] = []
     
     /**
@@ -119,17 +119,17 @@ final class WeatherListViewModel: WeatherListVM {
     /**
      Fetches the weather for the user's current location.
      */
+
     private func fetchCurrentLocationWeather() {
-        print("Fetched location weather")
+        guard !hasFetchedCurrentLocationWeather else { return }
+
         locationService.start { [weak self] location in
             guard let self = self else { return }
             self.weatherRepository.fetchCityName(from: location) { city in
-                guard let city = city else {
-                    return
-                }
+                guard let city = city else { return }
                 self.fetchWeather(for: city) { [weak self] response in
                     guard let self = self else { return }
-                    
+
                     let currentLocation: WeatherListSectionCellConfig = (.currentLocation, [.currentLocation(response)])
                     self.sectionConfigs.insert(currentLocation, at: 0)
                     DispatchQueue.main.async {
@@ -139,6 +139,8 @@ final class WeatherListViewModel: WeatherListVM {
                 }
             }
         }
+
+        hasFetchedCurrentLocationWeather = true
     }
     
     /**
@@ -146,7 +148,6 @@ final class WeatherListViewModel: WeatherListVM {
      */
     private func autoLoadLastSearchedCity() {
         guard let lastSearchedCity = UserDefaults.lastSearchedCity else { return }
-        print("///AutoLoad")
         self.fetchWeather(for: lastSearchedCity) { [weak self] response in
             guard let self = self else { return }
             let recents: WeatherListSectionCellConfig = (.recents, [.search(response)])
@@ -174,7 +175,7 @@ final class WeatherListViewModel: WeatherListVM {
             switch result {
             case .success(let weatherResponse):
                 completion(weatherResponse)
-            case .failure:
+            case .failure(let error):
                 DispatchQueue.main.async {
                     self.outputs.viewState(.error(BasicError.networkError))
                 }

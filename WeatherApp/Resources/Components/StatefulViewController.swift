@@ -5,8 +5,8 @@
 //  Created by Victor Ruiz on 5/26/23.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 enum ViewState: Equatable {
     case content
@@ -61,21 +61,10 @@ class StatefulViewController: UIViewController {
         return view
     }()
 
-    private lazy var errorView: ErrorView = {
-        let view = ErrorView()
-        view.reloadClosure = { [weak self] in
-            guard let self = self else { return }
-            print("Reload")
-        }
-        view.isHidden = true
-        return view
-    }()
-
     private lazy var containerView: UIView = {
         let view = UIView()
         view.addSubview(contentView)
         view.addSubview(loadingView)
-        view.addSubview(errorView)
         return view
     }()
 
@@ -105,13 +94,13 @@ class StatefulViewController: UIViewController {
 
     private func transitionToViewState(animated: Bool) {
         if case .error(let error) = viewState {
-            errorView.error = error
+            showAlert(with: error)
+            return
         }
 
         let swapActiveView = { [self] in
             loadingView.isHidden = true
             contentView.isHidden = true
-            errorView.isHidden = true
 
             switch viewState {
             case .loading:
@@ -119,7 +108,7 @@ class StatefulViewController: UIViewController {
             case .content:
                 contentView.isHidden = false
             case .error:
-                errorView.isHidden = false
+                break
             }
         }
 
@@ -142,12 +131,26 @@ class StatefulViewController: UIViewController {
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        errorView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-}
 
+    private func showAlert(with error: BasicError) {
+        let alertController = UIAlertController(
+            title: error.title,
+            message: error.message,
+            preferredStyle: .alert
+        )
+
+        let okayAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        )
+
+        alertController.addAction(okayAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+}

@@ -29,7 +29,7 @@ enum BasicError: BaseError, Equatable {
     var title: String? {
         switch self {
         case .networkError:
-            return Strings.Errors.somethingWentWrong
+            return Strings.Errors.networkError
         case .custom(let title, _):
             return title
         }

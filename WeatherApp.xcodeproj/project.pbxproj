@@ -10,7 +10,6 @@
 		98AB0B0F2A20746D00DF9843 /* StatefulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB0B0E2A20746D00DF9843 /* StatefulViewController.swift */; };
 		98AB0B142A2076E500DF9843 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB0B132A2076E500DF9843 /* LoadingView.swift */; };
 		98AB0B162A20779500DF9843 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB0B152A20779500DF9843 /* ActivityIndicator.swift */; };
-		98AB0B182A20783800DF9843 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB0B172A20783800DF9843 /* ErrorView.swift */; };
 		98AB279A2A207B5B00DF9843 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB27992A207B5B00DF9843 /* Layout.swift */; };
 		98AB279D2A207BF500DF9843 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB279C2A207BF500DF9843 /* UIStackView+Extension.swift */; };
 		98AB27A02A207C9900DF9843 /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AB279F2A207C9900DF9843 /* BasicError.swift */; };
@@ -65,7 +64,6 @@
 		98AB0B0E2A20746D00DF9843 /* StatefulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewController.swift; sourceTree = "<group>"; };
 		98AB0B132A2076E500DF9843 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98AB0B152A20779500DF9843 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		98AB0B172A20783800DF9843 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		98AB27992A207B5B00DF9843 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		98AB279C2A207BF500DF9843 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		98AB279F2A207C9900DF9843 /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				98AB0B0E2A20746D00DF9843 /* StatefulViewController.swift */,
 				98AB0B132A2076E500DF9843 /* LoadingView.swift */,
 				98AB0B152A20779500DF9843 /* ActivityIndicator.swift */,
-				98AB0B172A20783800DF9843 /* ErrorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -487,7 +484,6 @@
 				98AB27A22A207CB100DF9843 /* Strings.swift in Sources */,
 				98AB27A62A2082E500DF9843 /* HomeSectionHeaderView.swift in Sources */,
 				98AB279D2A207BF500DF9843 /* UIStackView+Extension.swift in Sources */,
-				98AB0B182A20783800DF9843 /* ErrorView.swift in Sources */,
 				98AB27BD2A20FED800DF9843 /* CurrentLocationCell.swift in Sources */,
 				98AB27B12A20C74800DF9843 /* UserDefaults+Extension.swift in Sources */,
 				98AB0B142A2076E500DF9843 /* LoadingView.swift in Sources */,
